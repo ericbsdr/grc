@@ -14,6 +14,10 @@ CakePHP version 3.3 is used.
 
 `config/app.php`
 
+## Database schema
+
+`config/db.sql`
+
 ## How to start developement environnement ?
 
 `bin/cake server`
