@@ -9,7 +9,7 @@ CREATE TABLE businessunits (
     modified DATETIME
 );
 
-DROP TABLE IF EXISTS assets;
+DROP TABLE IF EXISTS primary_assets;
 CREATE TABLE assets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -21,13 +21,26 @@ CREATE TABLE assets (
     review DATETIME
 );
 
-DROP TABLE IF EXISTS assets_businessunits;
-CREATE TABLE assets_businessunits (
-    asset_id INT NOT NULL,
+DROP TABLE IF EXISTS secondary_assets;
+CREATE TABLE assets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    owner VARCHAR(255),
+    status VARCHAR(255),
+    primary_asset_id INT,
+    created DATETIME,
+    modified DATETIME,
+    review DATETIME
+);
+
+DROP TABLE IF EXISTS businessunits_primary_assets;
+CREATE TABLE businessunits_primary_assets (
+    primary_asset_id INT NOT NULL,
     businessunit_id INT NOT NULL,
-    PRIMARY KEY (asset_id, businessunit_id),
+    PRIMARY KEY (primary_asset_id, businessunit_id),
     FOREIGN KEY businessunit_key(businessunit_id) REFERENCES businessunits(id),
-    FOREIGN KEY asset_key(asset_id) REFERENCES assets(id)
+    FOREIGN KEY primary_asset_key(primary_asset_id) REFERENCES primary_assets(id)
 );
 
 DROP TABLE IF EXISTS assetstypes;
@@ -84,3 +97,68 @@ CREATE TABLE projects (
 	id INT AUTO_INCREMENT PRIMARY KEY,
 	name VARCHAR(255)
 );
+
+DROP TABLE IF EXISTS threats;
+CREATE TABLE IF NOT EXISTS threats (
+  id int AUTO_INCREMENT PRIMARY KEY,
+  name varchar(100) NOT NULL
+);
+
+INSERT INTO threats (id, name) VALUES
+	(1, 'Grèves'),
+	(2, 'Perte de matériel involontaire'),
+	(3, 'Perte involontaire d\'information'),
+	(4, 'Vol de matériel'),
+	(5, 'Vol d\'information'),
+	(6, 'Ecoute réseau'),
+	(7, 'Attaque Réseau'),
+	(8, 'Attaque d\'une application web'),
+	(9, 'Malware/Trojan'),
+	(10, 'Virus'),
+	(11, 'Ingérinie Sociale'),
+	(12, 'Catastrophes naturelles'),
+	(13, 'Incendie'),
+	(14, 'Attaque par Brute Force'),
+	(15, 'Attaque DOS'),
+	(16, 'Man in the Middle'),
+	(17, 'Fraude'),
+	(18, 'Attaque terroriste'),
+	(19, 'Innondation'),
+	(20, 'Abus de privileges'),
+	(21, 'Intrusion'),
+	(22, 'Espionnage');
+
+/* TO DO : mettre en lien les actifs supports avec des vulnérabilités et menaces pour qu'elles soient suggérées dans l'analyse de risques */
+
+-- Dumping structure for table  vulnerabilities
+DROP TABLE IF EXISTS vulnerabilities;
+CREATE TABLE IF NOT EXISTS vulnerabilities (
+  id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(100) NOT NULL
+);
+
+INSERT INTO vulnerabilities (id, name) VALUES
+	(1, 'Manque d\'information'),
+	(2, 'Manque de tests d\'integrité'),
+	(3, 'Manque de journaux d\'évènements'),
+	(4, 'Absence de gestion des changements'),
+	(5, 'Supplier Failure'),
+	(6, 'Manque de redondance d\'alimentation électrique'),
+	(7, 'Défaut de contrôle d\'accès'),
+	(8, 'Défaut de patch de sécurité'),
+	(9, 'Vulnerabilities d\'une application web'),
+	(10, 'Manque de procédures'),
+	(11, 'Manque d\'authentication forte'),
+	(12, 'Manque de chiffrement'),
+	(13, 'Dysfonctionnement matériel'),
+	(14, 'Dysfonctionnement logiciel'),
+	(15, 'Manque de systèmes d\'extinction de feu'),
+	(16, 'Mots de passe faibles'),
+	(17, 'Manque de sensibilisation'),
+	(18, 'Ports réseaux ouverts'),
+	(19, 'Zone sismique'),
+	(20, 'Zone sensible aux catastrophes naturelles'),
+	(21, 'Zone inondable'),
+	(22, 'Réseau non protégé'),
+	(23, 'Cablage non sécurisé'),
+	(24, 'Faiblesse dans les pratiques de développement logiciel');
