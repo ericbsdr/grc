@@ -17,7 +17,10 @@ class PolicyStatusesControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.policy_statuses',
-        'app.policies'
+        'app.policies',
+        'app.projects',
+        'app.controls',
+        'app.audit_dates'
     ];
 
     /**

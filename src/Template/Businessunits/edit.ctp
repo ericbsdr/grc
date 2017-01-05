@@ -8,8 +8,8 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Businessunits'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Assets'), ['controller' => 'Assets', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Asset'), ['controller' => 'Assets', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Primary Assets'), ['controller' => 'PrimaryAssets', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Primary Asset'), ['controller' => 'PrimaryAssets', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="businessunits form large-9 medium-8 columns content">
@@ -17,10 +17,9 @@
     <fieldset>
         <legend><?= __('Edit Businessunit') ?></legend>
         <?php
-            echo $this->Form->input('asset_id');
             echo $this->Form->input('description');
             echo $this->Form->input('owner');
-            echo $this->Form->input('assets._ids', ['options' => $assets]);
+            echo $this->Form->input('primary_assets._ids', ['options' => $primaryAssets]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

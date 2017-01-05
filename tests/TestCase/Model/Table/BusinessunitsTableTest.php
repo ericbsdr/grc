@@ -25,8 +25,9 @@ class BusinessunitsTableTest extends TestCase
      */
     public $fixtures = [
         'app.businessunits',
-        'app.assets',
-        'app.assets_businessunits'
+        'app.primary_assets',
+        'app.secondary_assets',
+        'app.businessunits_primary_assets'
     ];
 
     /**
@@ -69,6 +70,16 @@ class BusinessunitsTableTest extends TestCase
      * @return void
      */
     public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

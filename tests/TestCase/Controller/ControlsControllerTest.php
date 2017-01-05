@@ -17,6 +17,9 @@ class ControlsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.controls',
+        'app.policies',
+        'app.policy_statuses',
+        'app.projects',
         'app.audit_dates'
     ];
 

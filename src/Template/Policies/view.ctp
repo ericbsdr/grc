@@ -59,6 +59,7 @@
                 <th scope="col"><?= __('Description') ?></th>
                 <th scope="col"><?= __('Status') ?></th>
                 <th scope="col"><?= __('Policy Id') ?></th>
+                <th scope="col"><?= __('Project Id') ?></th>
                 <th scope="col"><?= __('Audit Metric Description') ?></th>
                 <th scope="col"><?= __('Audit Success Crtieria') ?></th>
                 <th scope="col"><?= __('Audit Dates Id') ?></th>
@@ -73,6 +74,7 @@
                 <td><?= h($controls->description) ?></td>
                 <td><?= h($controls->status) ?></td>
                 <td><?= h($controls->policy_id) ?></td>
+                <td><?= h($controls->project_id) ?></td>
                 <td><?= h($controls->audit_metric_description) ?></td>
                 <td><?= h($controls->audit_success_crtieria) ?></td>
                 <td><?= h($controls->audit_dates_id) ?></td>

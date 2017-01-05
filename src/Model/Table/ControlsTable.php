@@ -10,6 +10,7 @@ use Cake\Validation\Validator;
  * Controls Model
  *
  * @property \Cake\ORM\Association\BelongsTo $Policies
+ * @property \Cake\ORM\Association\BelongsTo $Projects
  * @property \Cake\ORM\Association\BelongsTo $AuditDates
  *
  * @method \App\Model\Entity\Control get($primaryKey, $options = [])
@@ -43,6 +44,9 @@ class ControlsTable extends Table
 
         $this->belongsTo('Policies', [
             'foreignKey' => 'policy_id'
+        ]);
+        $this->belongsTo('Projects', [
+            'foreignKey' => 'project_id'
         ]);
         $this->belongsTo('AuditDates', [
             'foreignKey' => 'audit_dates_id'
@@ -90,6 +94,7 @@ class ControlsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['policy_id'], 'Policies'));
+        $rules->add($rules->existsIn(['project_id'], 'Projects'));
         $rules->add($rules->existsIn(['audit_dates_id'], 'AuditDates'));
 
         return $rules;

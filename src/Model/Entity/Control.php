@@ -11,12 +11,14 @@ use Cake\ORM\Entity;
  * @property string $description
  * @property string $status
  * @property int $policy_id
+ * @property int $project_id
  * @property string $audit_metric_description
  * @property string $audit_success_crtieria
  * @property int $audit_dates_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
+ * @property \App\Model\Entity\Policy $policy
  * @property \App\Model\Entity\AuditDate $audit_date
  */
 class Control extends Entity

@@ -19,7 +19,7 @@ class ControlsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['AuditDates']
+            'contain' => ['Policies', 'AuditDates']
         ];
         $controls = $this->paginate($this->Controls);
 
@@ -37,7 +37,7 @@ class ControlsController extends AppController
     public function view($id = null)
     {
         $control = $this->Controls->get($id, [
-            'contain' => ['AuditDates']
+            'contain' => ['Policies', 'AuditDates']
         ]);
 
         $this->set('control', $control);
@@ -62,8 +62,9 @@ class ControlsController extends AppController
                 $this->Flash->error(__('The control could not be saved. Please, try again.'));
             }
         }
+        $policies = $this->Controls->Policies->find('list', ['limit' => 200]);
         $auditDates = $this->Controls->AuditDates->find('list', ['limit' => 200]);
-        $this->set(compact('control', 'auditDates'));
+        $this->set(compact('control', 'policies', 'auditDates'));
         $this->set('_serialize', ['control']);
     }
 
@@ -89,8 +90,9 @@ class ControlsController extends AppController
                 $this->Flash->error(__('The control could not be saved. Please, try again.'));
             }
         }
+        $policies = $this->Controls->Policies->find('list', ['limit' => 200]);
         $auditDates = $this->Controls->AuditDates->find('list', ['limit' => 200]);
-        $this->set(compact('control', 'auditDates'));
+        $this->set(compact('control', 'policies', 'auditDates'));
         $this->set('_serialize', ['control']);
     }
 

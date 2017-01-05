@@ -14,9 +14,9 @@ CakePHP version 3.3 is used.
 
 `config/app.php`
 
-## Database schema
+## Import Database schema
 
-`config/db.sql`
+`mysql -u grc -p grc < config/db.sql`
 
 ## How to start developement environnement ?
 

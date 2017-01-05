@@ -5,6 +5,8 @@
         <li><?= $this->Form->postLink(__('Delete Control'), ['action' => 'delete', $control->id], ['confirm' => __('Are you sure you want to delete # {0}?', $control->id)]) ?> </li>
         <li><?= $this->Html->link(__('List Controls'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Control'), ['action' => 'add']) ?> </li>
+        <li><?= $this->Html->link(__('List Policies'), ['controller' => 'Policies', 'action' => 'index']) ?> </li>
+        <li><?= $this->Html->link(__('New Policy'), ['controller' => 'Policies', 'action' => 'add']) ?> </li>
         <li><?= $this->Html->link(__('List Audit Dates'), ['controller' => 'AuditDates', 'action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Audit Date'), ['controller' => 'AuditDates', 'action' => 'add']) ?> </li>
     </ul>
@@ -25,6 +27,10 @@
             <td><?= h($control->status) ?></td>
         </tr>
         <tr>
+            <th scope="row"><?= __('Policy') ?></th>
+            <td><?= $control->has('policy') ? $this->Html->link($control->policy->name, ['controller' => 'Policies', 'action' => 'view', $control->policy->id]) : '' ?></td>
+        </tr>
+        <tr>
             <th scope="row"><?= __('Audit Metric Description') ?></th>
             <td><?= h($control->audit_metric_description) ?></td>
         </tr>
@@ -41,8 +47,8 @@
             <td><?= $this->Number->format($control->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Policy Id') ?></th>
-            <td><?= $this->Number->format($control->policy_id) ?></td>
+            <th scope="row"><?= __('Project Id') ?></th>
+            <td><?= $this->Number->format($control->project_id) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Created') ?></th>

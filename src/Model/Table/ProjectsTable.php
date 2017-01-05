@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Projects Model
  *
+ * @property \Cake\ORM\Association\HasMany $Controls
  * @property \Cake\ORM\Association\HasMany $Policies
  *
  * @method \App\Model\Entity\Project get($primaryKey, $options = [])
@@ -36,6 +37,9 @@ class ProjectsTable extends Table
         $this->displayField('name');
         $this->primaryKey('id');
 
+        $this->hasMany('Controls', [
+            'foreignKey' => 'project_id'
+        ]);
         $this->hasMany('Policies', [
             'foreignKey' => 'project_id'
         ]);

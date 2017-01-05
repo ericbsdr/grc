@@ -9,8 +9,7 @@ use Cake\Validation\Validator;
 /**
  * Businessunits Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Assets
- * @property \Cake\ORM\Association\BelongsToMany $Assets
+ * @property \Cake\ORM\Association\BelongsToMany $PrimaryAssets
  *
  * @method \App\Model\Entity\Businessunit get($primaryKey, $options = [])
  * @method \App\Model\Entity\Businessunit newEntity($data = null, array $options = [])
@@ -41,13 +40,10 @@ class BusinessunitsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Assets', [
-            'foreignKey' => 'asset_id'
-        ]);
-        $this->belongsToMany('Assets', [
+        $this->belongsToMany('PrimaryAssets', [
             'foreignKey' => 'businessunit_id',
-            'targetForeignKey' => 'asset_id',
-            'joinTable' => 'assets_businessunits'
+            'targetForeignKey' => 'primary_asset_id',
+            'joinTable' => 'businessunits_primary_assets'
         ]);
     }
 
@@ -71,19 +67,5 @@ class BusinessunitsTable extends Table
             ->allowEmpty('owner');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules)
-    {
-        $rules->add($rules->existsIn(['asset_id'], 'Assets'));
-
-        return $rules;
     }
 }

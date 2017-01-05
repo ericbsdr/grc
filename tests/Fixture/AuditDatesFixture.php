@@ -37,7 +37,7 @@ class AuditDatesFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'date' => '2016-12-30 09:53:19'
+            'date' => '2017-01-05 18:35:57'
         ],
     ];
 }

@@ -22,6 +22,7 @@ class ControlsFixture extends TestFixture
         'description' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'status' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'policy_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'project_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'audit_metric_description' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'audit_success_crtieria' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'audit_dates_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
@@ -49,11 +50,12 @@ class ControlsFixture extends TestFixture
             'description' => 'Lorem ipsum dolor sit amet',
             'status' => 'Lorem ipsum dolor sit amet',
             'policy_id' => 1,
+            'project_id' => 1,
             'audit_metric_description' => 'Lorem ipsum dolor sit amet',
             'audit_success_crtieria' => 'Lorem ipsum dolor sit amet',
             'audit_dates_id' => 1,
-            'created' => '2016-12-30 09:53:07',
-            'modified' => '2016-12-30 09:53:07'
+            'created' => '2017-01-05 18:37:09',
+            'modified' => '2017-01-05 18:37:09'
         ],
     ];
 }

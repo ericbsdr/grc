@@ -34,7 +34,7 @@ class BusinessunitsController extends AppController
     public function view($id = null)
     {
         $businessunit = $this->Businessunits->get($id, [
-            'contain' => ['Assets']
+            'contain' => ['PrimaryAssets']
         ]);
 
         $this->set('businessunit', $businessunit);
@@ -59,8 +59,8 @@ class BusinessunitsController extends AppController
                 $this->Flash->error(__('The businessunit could not be saved. Please, try again.'));
             }
         }
-        $assets = $this->Businessunits->Assets->find('list', ['limit' => 200]);
-        $this->set(compact('businessunit', 'assets'));
+        $primaryAssets = $this->Businessunits->PrimaryAssets->find('list', ['limit' => 200]);
+        $this->set(compact('businessunit', 'primaryAssets'));
         $this->set('_serialize', ['businessunit']);
     }
 
@@ -74,7 +74,7 @@ class BusinessunitsController extends AppController
     public function edit($id = null)
     {
         $businessunit = $this->Businessunits->get($id, [
-            'contain' => ['Assets']
+            'contain' => ['PrimaryAssets']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $businessunit = $this->Businessunits->patchEntity($businessunit, $this->request->data);
@@ -86,8 +86,8 @@ class BusinessunitsController extends AppController
                 $this->Flash->error(__('The businessunit could not be saved. Please, try again.'));
             }
         }
-        $assets = $this->Businessunits->Assets->find('list', ['limit' => 200]);
-        $this->set(compact('businessunit', 'assets'));
+        $primaryAssets = $this->Businessunits->PrimaryAssets->find('list', ['limit' => 200]);
+        $this->set(compact('businessunit', 'primaryAssets'));
         $this->set('_serialize', ['businessunit']);
     }
 

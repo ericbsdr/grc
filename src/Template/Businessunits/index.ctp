@@ -2,8 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Businessunit'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Assets'), ['controller' => 'Assets', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Asset'), ['controller' => 'Assets', 'action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Primary Assets'), ['controller' => 'PrimaryAssets', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Primary Asset'), ['controller' => 'PrimaryAssets', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="businessunits index large-9 medium-8 columns content">
@@ -12,7 +12,6 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('asset_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('description') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('owner') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
@@ -24,7 +23,6 @@
             <?php foreach ($businessunits as $businessunit): ?>
             <tr>
                 <td><?= $this->Number->format($businessunit->id) ?></td>
-                <td><?= $this->Number->format($businessunit->asset_id) ?></td>
                 <td><?= h($businessunit->description) ?></td>
                 <td><?= h($businessunit->owner) ?></td>
                 <td><?= h($businessunit->created) ?></td>

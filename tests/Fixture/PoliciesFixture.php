@@ -47,9 +47,9 @@ class PoliciesFixture extends TestFixture
             'description' => 'Lorem ipsum dolor sit amet',
             'policy_status_id' => 1,
             'project_id' => 1,
-            'next_review_date' => '2016-12-30 09:52:58',
-            'created' => '2016-12-30 09:52:58',
-            'modified' => '2016-12-30 09:52:58'
+            'next_review_date' => '2017-01-05 18:37:21',
+            'created' => '2017-01-05 18:37:21',
+            'modified' => '2017-01-05 18:37:21'
         ],
     ];
 }

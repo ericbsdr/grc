@@ -7,13 +7,12 @@ use Cake\ORM\Entity;
  * Businessunit Entity
  *
  * @property int $id
- * @property int $asset_id
  * @property string $description
  * @property string $owner
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Asset[] $assets
+ * @property \App\Model\Entity\PrimaryAsset[] $primary_assets
  */
 class Businessunit extends Entity
 {

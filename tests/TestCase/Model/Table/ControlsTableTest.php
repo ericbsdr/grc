@@ -25,6 +25,9 @@ class ControlsTableTest extends TestCase
      */
     public $fixtures = [
         'app.controls',
+        'app.policies',
+        'app.policy_statuses',
+        'app.projects',
         'app.audit_dates'
     ];
 

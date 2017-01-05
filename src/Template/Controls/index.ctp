@@ -2,6 +2,8 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Control'), ['action' => 'add']) ?></li>
+        <li><?= $this->Html->link(__('List Policies'), ['controller' => 'Policies', 'action' => 'index']) ?></li>
+        <li><?= $this->Html->link(__('New Policy'), ['controller' => 'Policies', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Audit Dates'), ['controller' => 'AuditDates', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Audit Date'), ['controller' => 'AuditDates', 'action' => 'add']) ?></li>
     </ul>
@@ -16,6 +18,7 @@
                 <th scope="col"><?= $this->Paginator->sort('description') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('status') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('policy_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('project_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('audit_metric_description') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('audit_success_crtieria') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('audit_dates_id') ?></th>
@@ -31,7 +34,8 @@
                 <td><?= h($control->name) ?></td>
                 <td><?= h($control->description) ?></td>
                 <td><?= h($control->status) ?></td>
-                <td><?= $this->Number->format($control->policy_id) ?></td>
+                <td><?= $control->has('policy') ? $this->Html->link($control->policy->name, ['controller' => 'Policies', 'action' => 'view', $control->policy->id]) : '' ?></td>
+                <td><?= $this->Number->format($control->project_id) ?></td>
                 <td><?= h($control->audit_metric_description) ?></td>
                 <td><?= h($control->audit_success_crtieria) ?></td>
                 <td><?= $control->has('audit_date') ? $this->Html->link($control->audit_date->id, ['controller' => 'AuditDates', 'action' => 'view', $control->audit_date->id]) : '' ?></td>

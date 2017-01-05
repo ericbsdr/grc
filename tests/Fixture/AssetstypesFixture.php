@@ -40,8 +40,8 @@ class AssetstypesFixture extends TestFixture
         [
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-12-29 22:13:11',
-            'modified' => '2016-12-29 22:13:11'
+            'created' => '2017-01-05 18:35:44',
+            'modified' => '2017-01-05 18:35:44'
         ],
     ];
 }

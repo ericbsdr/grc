@@ -1,8 +1,11 @@
+DROP DATABASE grc;
+CREATE DATABASE grc;
+USE grc;
 
 DROP TABLE IF EXISTS businessunits;
 CREATE TABLE businessunits (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    asset_id INT,
+    /*primary_asset_id INT,*/
     description VARCHAR(255) NOT NULL,
     owner VARCHAR(255),
     created DATETIME,
@@ -10,7 +13,7 @@ CREATE TABLE businessunits (
 );
 
 DROP TABLE IF EXISTS primary_assets;
-CREATE TABLE assets (
+CREATE TABLE primary_assets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
@@ -21,8 +24,12 @@ CREATE TABLE assets (
     review DATETIME
 );
 
+INSERT INTO primary_assets (id, name) VALUES
+	(1, 'Information de santé');
+
+
 DROP TABLE IF EXISTS secondary_assets;
-CREATE TABLE assets (
+CREATE TABLE secondary_assets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
@@ -130,7 +137,6 @@ INSERT INTO threats (id, name) VALUES
 
 /* TO DO : mettre en lien les actifs supports avec des vulnérabilités et menaces pour qu'elles soient suggérées dans l'analyse de risques */
 
--- Dumping structure for table  vulnerabilities
 DROP TABLE IF EXISTS vulnerabilities;
 CREATE TABLE IF NOT EXISTS vulnerabilities (
   id int NOT NULL AUTO_INCREMENT PRIMARY KEY,

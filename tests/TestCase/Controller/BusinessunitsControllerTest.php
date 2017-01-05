@@ -17,8 +17,9 @@ class BusinessunitsControllerTest extends IntegrationTestCase
      */
     public $fixtures = [
         'app.businessunits',
-        'app.assets',
-        'app.assets_businessunits'
+        'app.primary_assets',
+        'app.secondary_assets',
+        'app.businessunits_primary_assets'
     ];
 
     /**

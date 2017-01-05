@@ -40,8 +40,8 @@ class PolicyStatusesFixture extends TestFixture
         [
             'id' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-12-30 09:52:53',
-            'modified' => '2016-12-30 09:52:53'
+            'created' => '2017-01-05 18:37:40',
+            'modified' => '2017-01-05 18:37:40'
         ],
     ];
 }

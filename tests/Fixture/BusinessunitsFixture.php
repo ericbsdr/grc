@@ -18,7 +18,6 @@ class BusinessunitsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'asset_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'description' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'owner' => ['type' => 'string', 'length' => 255, 'null' => true, 'default' => null, 'collate' => 'latin1_swedish_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
@@ -41,11 +40,10 @@ class BusinessunitsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'asset_id' => 1,
             'description' => 'Lorem ipsum dolor sit amet',
             'owner' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-12-30 08:45:00',
-            'modified' => '2016-12-30 08:45:00'
+            'created' => '2017-01-05 18:54:57',
+            'modified' => '2017-01-05 18:54:57'
         ],
     ];
 }
