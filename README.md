@@ -14,10 +14,11 @@ CakePHP version 3.3 is used.
 
 `config/app.php`
 
-## Create user
+## Create bd & user
 ``` 
+CREATE DATABASE grc;
 CREATE USER 'grc'@'localhost' IDENTIFIED BY 'grc';
-GRANT ALL PRIVILEGES ON * . * TO 'grc'@'localhost';
+GRANT ALL PRIVILEGES ON grc . * TO 'grc'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
