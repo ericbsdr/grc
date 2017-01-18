@@ -14,6 +14,13 @@ CakePHP version 3.3 is used.
 
 `config/app.php`
 
+## Create user
+``` 
+CREATE USER 'grc'@'localhost' IDENTIFIED BY 'grc';
+GRANT ALL PRIVILEGES ON * . * TO 'grc'@'localhost';
+FLUSH PRIVILEGES;
+```
+
 ## Import Database schema
 
 `mysql -u grc -p grc < config/db.sql`
