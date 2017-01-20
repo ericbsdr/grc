@@ -66,6 +66,16 @@ CREATE TABLE policy_statuses (
     modified DATETIME
 );
 
+DROP TABLE IF EXISTS regulatory;
+CREATE TABLE IF NOT EXISTS regulatory (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(100) NOT NULL,
+  description text NOT NULL,
+  risk_magnifier float DEFAULT NULL,
+  created datetime NOT NULL,
+  modified datetime NOT NULL,
+);
+
 DROP TABLE IF EXISTS policies;
 CREATE TABLE policies (
 	id INT AUTO_INCREMENT PRIMARY KEY,
