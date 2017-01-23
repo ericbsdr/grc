@@ -5,7 +5,6 @@ USE grc;
 DROP TABLE IF EXISTS businessunits;
 CREATE TABLE businessunits (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    /*primary_asset_id INT,*/
     description VARCHAR(255) NOT NULL,
     owner VARCHAR(255),
     created DATETIME,
@@ -25,8 +24,56 @@ CREATE TABLE primary_assets (
 );
 
 INSERT INTO primary_assets (id, name) VALUES
-	(1, 'Information de santé');
+	(1, 'Information de santé'),
+	(2, 'Information personnelle des agents'),
+	(3, 'Information de configuration');
 
+DROP TABLE IF EXISTS asset_classifications;
+CREATE TABLE IF NOT EXISTS asset_classifications (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(100) NOT NULL,
+  criteria text NOT NULL,
+  asset_classification_type_id int(11) NOT NULL,
+  created datetime NOT NULL,
+  modified datetime NOT NULL
+);
+
+INSERT INTO asset_classifications (id, name, criteria, asset_classification_type_id) VALUES
+	(1, 'Critique', 'Interruption < à 2H intolérable', 1),
+	(2, 'Important', 'Interruption de 2H à 8H tolérable', 1),
+	(3, 'Significatif', 'Interruption de 8H à 24H tolérable', 1),
+	(4, 'Faible ou inexistant', 'Interruption > à 24H tolérable', 1),
+
+	(5, 'Critique', 'Mise en danger d\'un patient, pronostic vital', 2),
+	(6, 'Important', 'Entraîne des conséquence dommageable sur le patient', 2),
+	(7, 'Significatif', 'Suceptible de générer des erreurs détectables', 2),
+	(8, 'Faible ou inexistant', 'Sans conséquence', 2),
+
+	(9, 'Critique', 'Secret médical', 3),
+	(10, 'Important', 'Diffusion aux seules personnes habilitées. Les informations sont protégées par le secret médical ou le secret professionnel et par la législation sur les données à caractère médical.', 3),
+	(11, 'Significatif', 'Diffusion interne.', 3),
+	(12, 'Faible ou inexistant', 'Les informations peuvent être lues par tous', 3);
+
+DROP TABLE IF EXISTS asset_classification_types;
+CREATE TABLE IF NOT EXISTS asset_classification_types (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(100) NOT NULL
+);
+
+INSERT INTO asset_classification_types (id, name) VALUES
+	(1, 'Disponibilité'),
+	(2, 'Intégrité'),
+	(3, 'Confidentialité');
+
+DROP TABLE IF EXISTS asset_classifications_primary_assets;
+CREATE TABLE IF NOT EXISTS asset_classifications_primary_assets (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  asset_classifications_id int(11) NOT NULL,
+  primary_asset_id int(11) NOT NULL,
+  PRIMARY KEY (asset_classifications_id, primary_asset_id),
+  FOREIGN KEY asset_classifications_key(asset_classifications_id) REFERENCES asset_classifications(id),
+  FOREIGN KEY primary_asset_key(primary_asset_id) REFERENCES primary_assets(id)
+);
 
 DROP TABLE IF EXISTS secondary_assets;
 CREATE TABLE secondary_assets (
@@ -35,7 +82,7 @@ CREATE TABLE secondary_assets (
     description VARCHAR(255),
     owner VARCHAR(255),
     status VARCHAR(255),
-    primary_asset_id INT,
+    primary_asset_id INT NOT NULL,
     created DATETIME,
     modified DATETIME,
     review DATETIME
@@ -73,7 +120,7 @@ CREATE TABLE IF NOT EXISTS regulatory (
   description text NOT NULL,
   risk_magnifier float DEFAULT NULL,
   created datetime NOT NULL,
-  modified datetime NOT NULL,
+  modified datetime NOT NULL
 );
 
 DROP TABLE IF EXISTS policies;
@@ -178,3 +225,4 @@ INSERT INTO vulnerabilities (id, name) VALUES
 	(22, 'Réseau non protégé'),
 	(23, 'Cablage non sécurisé'),
 	(24, 'Faiblesse dans les pratiques de développement logiciel');
+

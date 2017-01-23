@@ -29,8 +29,14 @@ FLUSH PRIVILEGES;
 ## How to start developement environnement ?
 
 `bin/cake server`
+CakePHP will listen on port 8765.
 
 ## How to generate Scaffold Code ?
 
 `bin/cake bake all [name]`
 [See this](http://book.cakephp.org/3.0/en/bake/usage.html) 
+
+# URLs
+
+http://localhost:8765/PrimaryAssets
+http://localhost:8765/primary-assets

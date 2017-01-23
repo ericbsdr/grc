@@ -21,7 +21,7 @@
             echo $this->Form->input('description');
             echo $this->Form->input('owner');
             echo $this->Form->input('status');
-            echo $this->Form->input('primary_asset_id', ['options' => $primaryAssets, 'empty' => true]);
+            echo $this->Form->input('primary_asset_id', ['options' => $primaryAssets]);
             echo $this->Form->input('review', ['empty' => true]);
         ?>
     </fieldset>

@@ -9,6 +9,7 @@ use Cake\Validation\Validator;
 /**
  * PrimaryAssets Model
  *
+ * @property \Cake\ORM\Association\HasMany $AssetClassificationsAssets
  * @property \Cake\ORM\Association\HasMany $SecondaryAssets
  * @property \Cake\ORM\Association\BelongsToMany $Businessunits
  *
@@ -41,6 +42,9 @@ class PrimaryAssetsTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('AssetClassificationsAssets', [
+            'foreignKey' => 'primary_asset_id'
+        ]);
         $this->hasMany('SecondaryAssets', [
             'foreignKey' => 'primary_asset_id'
         ]);

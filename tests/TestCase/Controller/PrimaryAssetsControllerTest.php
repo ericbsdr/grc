@@ -19,8 +19,6 @@ class PrimaryAssetsControllerTest extends IntegrationTestCase
         'app.primary_assets',
         'app.secondary_assets',
         'app.businessunits',
-        'app.assets',
-        'app.assets_businessunits',
         'app.businessunits_primary_assets'
     ];
 

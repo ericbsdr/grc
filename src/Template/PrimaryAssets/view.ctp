@@ -90,7 +90,6 @@
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <th scope="col"><?= __('Id') ?></th>
-                <th scope="col"><?= __('Asset Id') ?></th>
                 <th scope="col"><?= __('Description') ?></th>
                 <th scope="col"><?= __('Owner') ?></th>
                 <th scope="col"><?= __('Created') ?></th>
@@ -100,7 +99,6 @@
             <?php foreach ($primaryAsset->businessunits as $businessunits): ?>
             <tr>
                 <td><?= h($businessunits->id) ?></td>
-                <td><?= h($businessunits->asset_id) ?></td>
                 <td><?= h($businessunits->description) ?></td>
                 <td><?= h($businessunits->owner) ?></td>
                 <td><?= h($businessunits->created) ?></td>

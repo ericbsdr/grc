@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\PrimaryAssetsTable;
+use App\Model\Table\RegulatoryTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\PrimaryAssetsTable Test Case
+ * App\Model\Table\RegulatoryTable Test Case
  */
-class PrimaryAssetsTableTest extends TestCase
+class RegulatoryTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\PrimaryAssetsTable
+     * @var \App\Model\Table\RegulatoryTable
      */
-    public $PrimaryAssets;
+    public $Regulatory;
 
     /**
      * Fixtures
@@ -24,10 +24,7 @@ class PrimaryAssetsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.primary_assets',
-        'app.secondary_assets',
-        'app.businessunits',
-        'app.businessunits_primary_assets'
+        'app.regulatory'
     ];
 
     /**
@@ -38,8 +35,8 @@ class PrimaryAssetsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('PrimaryAssets') ? [] : ['className' => 'App\Model\Table\PrimaryAssetsTable'];
-        $this->PrimaryAssets = TableRegistry::get('PrimaryAssets', $config);
+        $config = TableRegistry::exists('Regulatory') ? [] : ['className' => 'App\Model\Table\RegulatoryTable'];
+        $this->Regulatory = TableRegistry::get('Regulatory', $config);
     }
 
     /**
@@ -49,7 +46,7 @@ class PrimaryAssetsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->PrimaryAssets);
+        unset($this->Regulatory);
 
         parent::tearDown();
     }

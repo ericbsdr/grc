@@ -7,21 +7,20 @@ use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
 /**
- * SecondaryAssets Model
+ * AssetClassificationsAssets Model
  *
+ * @property \Cake\ORM\Association\BelongsTo $AssetClassifications
  * @property \Cake\ORM\Association\BelongsTo $PrimaryAssets
  *
- * @method \App\Model\Entity\SecondaryAsset get($primaryKey, $options = [])
- * @method \App\Model\Entity\SecondaryAsset newEntity($data = null, array $options = [])
- * @method \App\Model\Entity\SecondaryAsset[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\SecondaryAsset|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\SecondaryAsset patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\SecondaryAsset[] patchEntities($entities, array $data, array $options = [])
- * @method \App\Model\Entity\SecondaryAsset findOrCreate($search, callable $callback = null)
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
+ * @method \App\Model\Entity\AssetClassificationsAsset get($primaryKey, $options = [])
+ * @method \App\Model\Entity\AssetClassificationsAsset newEntity($data = null, array $options = [])
+ * @method \App\Model\Entity\AssetClassificationsAsset[] newEntities(array $data, array $options = [])
+ * @method \App\Model\Entity\AssetClassificationsAsset|bool save(\Cake\Datasource\EntityInterface $entity, $options = [])
+ * @method \App\Model\Entity\AssetClassificationsAsset patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
+ * @method \App\Model\Entity\AssetClassificationsAsset[] patchEntities($entities, array $data, array $options = [])
+ * @method \App\Model\Entity\AssetClassificationsAsset findOrCreate($search, callable $callback = null)
  */
-class SecondaryAssetsTable extends Table
+class AssetClassificationsAssetsTable extends Table
 {
 
     /**
@@ -34,12 +33,14 @@ class SecondaryAssetsTable extends Table
     {
         parent::initialize($config);
 
-        $this->table('secondary_assets');
-        $this->displayField('name');
+        $this->table('asset_classifications_assets');
+        $this->displayField('id');
         $this->primaryKey('id');
 
-        $this->addBehavior('Timestamp');
-
+        $this->belongsTo('AssetClassifications', [
+            'foreignKey' => 'asset_classification_id',
+            'joinType' => 'INNER'
+        ]);
         $this->belongsTo('PrimaryAssets', [
             'foreignKey' => 'primary_asset_id',
             'joinType' => 'INNER'
@@ -58,23 +59,6 @@ class SecondaryAssetsTable extends Table
             ->integer('id')
             ->allowEmpty('id', 'create');
 
-        $validator
-            ->requirePresence('name', 'create')
-            ->notEmpty('name');
-
-        $validator
-            ->allowEmpty('description');
-
-        $validator
-            ->allowEmpty('owner');
-
-        $validator
-            ->allowEmpty('status');
-
-        $validator
-            ->dateTime('review')
-            ->allowEmpty('review');
-
         return $validator;
     }
 
@@ -87,6 +71,7 @@ class SecondaryAssetsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
+        $rules->add($rules->existsIn(['asset_classification_id'], 'AssetClassifications'));
         $rules->add($rules->existsIn(['primary_asset_id'], 'PrimaryAssets'));
 
         return $rules;

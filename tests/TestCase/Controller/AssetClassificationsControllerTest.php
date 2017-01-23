@@ -1,13 +1,13 @@
 <?php
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\SecondaryAssetsController;
+use App\Controller\AssetClassificationsController;
 use Cake\TestSuite\IntegrationTestCase;
 
 /**
- * App\Controller\SecondaryAssetsController Test Case
+ * App\Controller\AssetClassificationsController Test Case
  */
-class SecondaryAssetsControllerTest extends IntegrationTestCase
+class AssetClassificationsControllerTest extends IntegrationTestCase
 {
 
     /**
@@ -16,11 +16,11 @@ class SecondaryAssetsControllerTest extends IntegrationTestCase
      * @var array
      */
     public $fixtures = [
-        'app.secondary_assets',
-        'app.primary_assets',
-        'app.asset_classifications_assets',
         'app.asset_classifications',
         'app.asset_classification_types',
+        'app.asset_classifications_assets',
+        'app.primary_assets',
+        'app.secondary_assets',
         'app.businessunits',
         'app.businessunits_primary_assets'
     ];

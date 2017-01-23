@@ -1,22 +1,22 @@
 <?php
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\SecondaryAssetsTable;
+use App\Model\Table\AssetClassificationsAssetsTable;
 use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\SecondaryAssetsTable Test Case
+ * App\Model\Table\AssetClassificationsAssetsTable Test Case
  */
-class SecondaryAssetsTableTest extends TestCase
+class AssetClassificationsAssetsTableTest extends TestCase
 {
 
     /**
      * Test subject
      *
-     * @var \App\Model\Table\SecondaryAssetsTable
+     * @var \App\Model\Table\AssetClassificationsAssetsTable
      */
-    public $SecondaryAssets;
+    public $AssetClassificationsAssets;
 
     /**
      * Fixtures
@@ -24,11 +24,11 @@ class SecondaryAssetsTableTest extends TestCase
      * @var array
      */
     public $fixtures = [
-        'app.secondary_assets',
-        'app.primary_assets',
         'app.asset_classifications_assets',
         'app.asset_classifications',
         'app.asset_classification_types',
+        'app.primary_assets',
+        'app.secondary_assets',
         'app.businessunits',
         'app.businessunits_primary_assets'
     ];
@@ -41,8 +41,8 @@ class SecondaryAssetsTableTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $config = TableRegistry::exists('SecondaryAssets') ? [] : ['className' => 'App\Model\Table\SecondaryAssetsTable'];
-        $this->SecondaryAssets = TableRegistry::get('SecondaryAssets', $config);
+        $config = TableRegistry::exists('AssetClassificationsAssets') ? [] : ['className' => 'App\Model\Table\AssetClassificationsAssetsTable'];
+        $this->AssetClassificationsAssets = TableRegistry::get('AssetClassificationsAssets', $config);
     }
 
     /**
@@ -52,7 +52,7 @@ class SecondaryAssetsTableTest extends TestCase
      */
     public function tearDown()
     {
-        unset($this->SecondaryAssets);
+        unset($this->AssetClassificationsAssets);
 
         parent::tearDown();
     }
